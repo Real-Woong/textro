@@ -6,12 +6,17 @@ import re
 import fitz                   # PyMuPDF
 import pytesseract
 from PIL import Image, ImageOps
+from pathlib import Path
+import os
 
 # =========================
 # 0. tessdata_best 경로 설정
 # =========================
 # tessdata_best 안에 kor.traineddata, (eng.traineddata, osd.traineddata 있어도 상관 없음)
-os.environ["TESSDATA_PREFIX"] = "/Users/kim_jinwoong/Desktop/project/프로젝트_개인/Extract_Text_from_PDF(img)/tessdata_best"
+PROJECT_ROOT = Path.home() / "Desktop/Project/Project_AI"
+TESSDATA_DIR = PROJECT_ROOT / "models" / "Model-OCR" / "tesseract_kor_eng"
+
+os.environ["TESSDATA_PREFIX"] = str(TESSDATA_DIR)
 
 # =========================
 # 헬퍼함수 추가
